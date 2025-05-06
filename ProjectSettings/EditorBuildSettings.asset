@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/UnityTechnologies/Playground/Examples/Roguelike/Roguelike.unity
     guid: ad15a26015e49439387b05c22fe7a962
+  - enabled: 1
+    path: Assets/AleckScenes/AleckCharSelect.unity
+    guid: 7f173f34a617d12459d82b79f35672f1
+  - enabled: 1
+    path: Assets/AleckScenes/Lv1.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

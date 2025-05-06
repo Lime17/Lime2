@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4099057006607195707}
   - component: {fileID: 918965021126222334}
   - component: {fileID: 8342341299735097203}
+  - component: {fileID: -323273447799359966}
+  - component: {fileID: 3069919377289693017}
   m_Layer: 0
   m_Name: Char2
   m_TagString: Player
@@ -211,3 +213,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-323273447799359966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563897767097342858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0e1cb41c5032845bbaebbd6ed6f279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballRigidbody: {fileID: 2237105342704757972, guid: 153bf98a64af249659cb48845635b80c,
+    type: 3}
+  popForce: 5
+  popRange: 1.5
+  pushKey: 0
+--- !u!114 &3069919377289693017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563897767097342858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8b2e14ae3127e48965d0ddb48208b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  superJumpKey: 122
+  jumpForce: 20
+  shockwaveRadius: 3
+  shockwaveMultiplier: 5

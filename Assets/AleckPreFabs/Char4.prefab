@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3014990517075869217}
   - component: {fileID: 6520805414195784673}
   - component: {fileID: -4701454318872403752}
+  - component: {fileID: -1684913158617077559}
   m_Layer: 0
   m_Name: Char4
   m_TagString: Player
@@ -215,3 +216,20 @@ MonoBehaviour:
   dashDuration: 0.1
   dashCooldown: 1.5
   dashKey: 304
+--- !u!114 &-1684913158617077559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178028246672561577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0e1cb41c5032845bbaebbd6ed6f279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballRigidbody: {fileID: 2237105342704757972, guid: 153bf98a64af249659cb48845635b80c,
+    type: 3}
+  popForce: 5
+  popRange: 1.5
+  pushKey: 0

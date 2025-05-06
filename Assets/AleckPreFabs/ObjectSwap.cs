@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSwap : MonoBehaviour
 {
+    [Header("Swap Target")]
+    public GameObject ball;
 
-public GameObject ball;
+    [Header("Control")]
+    public KeyCode swapKey = KeyCode.LeftShift; // This line is REQUIRED
 
-    // Update is called once per frame
-   public void swap()
+    void Update()
     {
-        Vector3 ballPosition = ball.transform.position;
-        Vector3 thisPosition = this.transform.position;
-            ball.transform.position = thisPosition;
-           this.transform.position = ballPosition;
+        if (Input.GetKeyDown(swapKey) && ball != null)
+        {
+            SwapPositions();
+        }
+    }
+
+    public void SwapPositions()
+    {
+        Vector3 tempPosition = ball.transform.position;
+        ball.transform.position = transform.position;
+        transform.position = tempPosition;
     }
 }

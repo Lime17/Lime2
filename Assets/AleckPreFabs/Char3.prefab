@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 1198343960547230503}
   - component: {fileID: 3714831294674981348}
   - component: {fileID: 9068984025245977164}
-  - component: {fileID: 3283263071167882764}
   - component: {fileID: 1720097456216907356}
+  - component: {fileID: 7625207228148393647}
   m_Layer: 0
   m_Name: Char3
   m_TagString: Player
@@ -213,41 +213,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3283263071167882764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2155831390299376213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ddb73e2f0dc401ebfb23c7b6e72fa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: []
-  useCustomActions: 1
-  customActions:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1720097456216907356}
-        m_TargetAssemblyTypeName: ObjectSwap, Assembly-CSharp
-        m_MethodName: swap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  happenOnlyOnce: 0
-  filterByTag: 0
-  filterTag: Player
-  keyToPress: 106
-  eventType: 0
-  frequency: 0.5
 --- !u!114 &1720097456216907356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,3 +226,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1684278275191224709, guid: 153bf98a64af249659cb48845635b80c, type: 3}
+  swapKey: 304
+--- !u!114 &7625207228148393647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155831390299376213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf0e1cb41c5032845bbaebbd6ed6f279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballRigidbody: {fileID: 2237105342704757972, guid: 153bf98a64af249659cb48845635b80c,
+    type: 3}
+  popForce: 5
+  popRange: 1.5
+  pushKey: 0

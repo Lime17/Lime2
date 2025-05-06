@@ -15,13 +15,15 @@ public class FightManager : MonoBehaviour
     // Which movement keys and jump key Player 1 should use.
     public Enums.KeyGroups moveKeysP1 = Enums.KeyGroups.ArrowKeys;
     public KeyCode jumpKeyP1 = KeyCode.Return;
-    public KeyCode specialKeyP1 = KeyCode.LeftShift;
+    public KeyCode specialKeyP1 = KeyCode.E;
+    public KeyCode pushKeyP1 = KeyCode.Q;
 
     [Header("Player 2 Controls")]
     // Which movement keys and jump key Player 2 should use.
     public Enums.KeyGroups moveKeysP2 = Enums.KeyGroups.WASD;
     public KeyCode jumpKeyP2 = KeyCode.Space;
-    public KeyCode specialKeyP2 = KeyCode.RightShift;
+    public KeyCode specialKeyP2 = KeyCode.Period;
+    public KeyCode pushKeyP2 = KeyCode.Comma;
 
     void Start()
     {
@@ -48,8 +50,8 @@ public class FightManager : MonoBehaviour
         GameObject p2 = Instantiate(characterPrefabs[p2Index], p2Spawn.position, Quaternion.identity);
 
         // Assign control schemes for each player
-        AssignPlaygroundControls(p1, moveKeysP1, jumpKeyP1, specialKeyP1);
-        AssignPlaygroundControls(p2, moveKeysP2, jumpKeyP2, specialKeyP2);
+        AssignPlaygroundControls(p1, moveKeysP1, jumpKeyP1, specialKeyP1, pushKeyP1);
+        AssignPlaygroundControls(p2, moveKeysP2, jumpKeyP2, specialKeyP2, pushKeyP2);
     }
 
     // Fallback method if singleton fails: spawn the first two characters in the array
@@ -64,8 +66,8 @@ public class FightManager : MonoBehaviour
         GameObject p1 = Instantiate(characterPrefabs[0], p1Spawn.position, Quaternion.identity);
         GameObject p2 = Instantiate(characterPrefabs[1], p2Spawn.position, Quaternion.identity);
 
-        AssignPlaygroundControls(p1, moveKeysP1, jumpKeyP1, specialKeyP1);
-        AssignPlaygroundControls(p2, moveKeysP2, jumpKeyP2, specialKeyP2);
+        AssignPlaygroundControls(p1, moveKeysP1, jumpKeyP1, specialKeyP1, pushKeyP1);
+        AssignPlaygroundControls(p2, moveKeysP2, jumpKeyP2, specialKeyP2, pushKeyP2);
     }
 
     // Choose a random index different from the one passed in
@@ -83,25 +85,38 @@ public class FightManager : MonoBehaviour
     }
 
     // Assign movement and jump controls to the character using Playground's Move and Jump scripts
-    void AssignPlaygroundControls(GameObject character, Enums.KeyGroups moveKeys, KeyCode jumpKey, KeyCode specialKey)
+    void AssignPlaygroundControls(GameObject character, Enums.KeyGroups moveKeys, KeyCode jumpKey, KeyCode specialKey, KeyCode pushKey)
+{
+    Move move = character.GetComponent<Move>();
+    if (move != null)
     {
-        Move move = character.GetComponent<Move>();
-        if (move != null)
-        {
-            move.typeOfControl = moveKeys;
-        }
-
-        Jump jump = character.GetComponent<Jump>();
-        if (jump != null)
-        {
-            jump.key = jumpKey;
-        }
-
-          Dash dash = character.GetComponent<Dash>();
-      if (dash != null)
-      {
-        dash.typeOfControl = moveKeys; // Make sure control group matches movement
-        dash.dashKey = specialKey;
-        }
+        move.typeOfControl = moveKeys;
     }
+
+    Jump jump = character.GetComponent<Jump>();
+    if (jump != null)
+    {
+        jump.key = jumpKey;
+    }
+
+    Dash dash = character.GetComponent<Dash>();
+    if (dash != null)
+    {
+        dash.typeOfControl = moveKeys;
+        dash.dashKey = specialKey;
+    }
+
+    BallPopper popper = character.GetComponent<BallPopper>();
+    if (popper != null)
+    {
+        popper.pushKey = pushKey;
+        popper.ballRigidbody = GameObject.FindWithTag("Bullet")?.GetComponent<Rigidbody2D>();
+    }
+
+    SuperJump superJump = character.GetComponent<SuperJump>();
+    if (superJump != null)
+    {
+        superJump.superJumpKey = specialKey;
+    }
+}
 }

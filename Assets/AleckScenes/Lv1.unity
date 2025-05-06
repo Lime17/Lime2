@@ -686,6 +686,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Invisible Wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4455666708620944796, guid: e38f513194b5f4c288511b92a296c259,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4455666708620944796, guid: e38f513194b5f4c288511b92a296c259,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4455666708620944796, guid: e38f513194b5f4c288511b92a296c259,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03e8c13697b6d472f99eba994a499a3e,
+        type: 3}
+    - target: {fileID: 4455666708620944796, guid: e38f513194b5f4c288511b92a296c259,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7624819828966126281, guid: e38f513194b5f4c288511b92a296c259,
         type: 3}
       propertyPath: m_LocalScale.y

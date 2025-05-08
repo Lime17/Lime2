@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   key: 119
-  jumpStrength: 15
+  jumpStrength: 20
   groundTag: Ground
   checkGround: 1
 --- !u!114 &-3747755864708459088
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   typeOfControl: 1
-  speed: 7
+  speed: 7.5
   movementType: 1
   orientToDirection: 0
   lookAxis: 0
@@ -226,6 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballRigidbody: {fileID: 2237105342704757972, guid: 153bf98a64af249659cb48845635b80c,
     type: 3}
-  popForce: 5
-  popRange: 1.5
+  popForce: 7
+  popRange: 2.3
   pushKey: 0

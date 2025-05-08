@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class SuperJump : MonoBehaviour
 {
-    public KeyCode superJumpKey;  // Changed variable name
-    public float jumpForce = 20f;  // Force applied on jump
-    public float shockwaveRadius = 5f;  // Radius of the shockwave effect
-    public float shockwaveMultiplier = 5f;  // Multiplier for shockwave force
+    public KeyCode superJumpKey = KeyCode.None;      // Assigned via FightManager
+    public float jumpForce = 20f;                    // Upward impulse
+    public float shockwaveRadius = 5f;               // Radius of the landing shockwave
+    public float shockwaveMultiplier = 5f;           // Force per unit fall height
+    public float groundCheckDistance = 1.1f;         // How far down to raycast
+
+    public float superJumpCooldown = 2f;  // Cooldown time
+    private bool canSuperJump = true;      // Flag to check if jump can be used
+
 
     private Rigidbody2D rb;
     private bool isJumping = false;
@@ -23,13 +29,15 @@ public class SuperJump : MonoBehaviour
     {
         bool isGrounded = IsGrounded();
 
-        // Start the SuperJump when pressing superJumpKey
-        if (Input.GetKeyDown(superJumpKey) && isGrounded)
+        // Try to SuperJump
+       if (Input.GetKeyDown(superJumpKey) && isGrounded && canSuperJump)
         {
             Jump();
+            StartCoroutine(SuperJumpCooldown());
         }
 
-        // Apply shockwave on landing
+
+        // On landing, trigger shockwave
         if (isJumping && isGrounded && !wasGroundedLastFrame)
         {
             float fallHeight = jumpStartY - transform.position.y;
@@ -50,31 +58,47 @@ public class SuperJump : MonoBehaviour
 
     void CreateShockwave(float force)
     {
-        // Create the shockwave to affect nearby objects
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, shockwaveRadius);
         foreach (Collider2D hit in hits)
         {
-            Rigidbody2D hitRb = hit.GetComponent<Rigidbody2D>();
-            if (hitRb != null && hitRb != rb)  // Avoid affecting the player itself
+            Rigidbody2D hitRb = hit.attachedRigidbody;
+            if (hitRb != null && hitRb != rb)
             {
-                Vector2 direction = (hit.transform.position - transform.position).normalized;
-                hitRb.AddForce(direction * force, ForceMode2D.Impulse);
+                Vector2 dir = (hit.transform.position - transform.position).normalized;
+                hitRb.AddForce(dir * force, ForceMode2D.Impulse);
             }
         }
     }
 
     bool IsGrounded()
     {
-        // Simple ground check with raycast
-        float extraHeight = 0.1f;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f + extraHeight, LayerMask.GetMask("Ground"));
-        return hit.collider != null;
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y - 0.5f); // Adjust origin to feet
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance);
+
+        if (hit.collider != null)
+        {
+            // Debugging
+            Debug.Log("Raycast hit: " + hit.collider.name + " (tag: " + hit.collider.tag + ")");
+            return hit.collider.CompareTag("Ground");
+        }
+
+        return false;
     }
 
     void OnDrawGizmosSelected()
     {
-        // Visualize shockwave area in editor
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, shockwaveRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance);
     }
+
+    private IEnumerator SuperJumpCooldown()
+    {
+        canSuperJump = false; // Disable super jump temporarily
+        yield return new WaitForSeconds(superJumpCooldown); // Wait for cooldown to expire
+        canSuperJump = true;  // Enable super jump again
+    }
+
 }
+

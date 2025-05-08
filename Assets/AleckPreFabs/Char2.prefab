@@ -117,8 +117,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &5124641106051253291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   typeOfControl: 0
-  speed: 7
+  speed: 6.8
   movementType: 1
   orientToDirection: 0
   lookAxis: 0
@@ -242,7 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8b2e14ae3127e48965d0ddb48208b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  superJumpKey: 122
-  jumpForce: 20
-  shockwaveRadius: 3
-  shockwaveMultiplier: 5
+  superJumpKey: 0
+  jumpForce: 30
+  shockwaveRadius: 4
+  shockwaveMultiplier: 15
+  groundCheckDistance: 1.1
+  superJumpCooldown: 2

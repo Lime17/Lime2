@@ -15,8 +15,8 @@ public class FightManager : MonoBehaviour
     // Which movement keys and jump key Player 1 should use.
     public Enums.KeyGroups moveKeysP1 = Enums.KeyGroups.ArrowKeys;
     public KeyCode jumpKeyP1 = KeyCode.Return;
-    public KeyCode specialKeyP1 = KeyCode.E;
-    public KeyCode pushKeyP1 = KeyCode.Q;
+    public KeyCode specialKeyP1 = KeyCode.R;
+    public KeyCode pushKeyP1 = KeyCode.T;
 
     [Header("Player 2 Controls")]
     // Which movement keys and jump key Player 2 should use.
@@ -114,9 +114,16 @@ public class FightManager : MonoBehaviour
     }
 
     SuperJump superJump = character.GetComponent<SuperJump>();
-    if (superJump != null)
-    {
-        superJump.superJumpKey = specialKey;
+     if (superJump != null)
+   {
+       superJump.superJumpKey = specialKey;
     }
+    
+
+    ObjectSwap swap = character.GetComponent<ObjectSwap>();
+if (swap != null)
+{
+    swap.swapKey = specialKey;
+}
 }
 }

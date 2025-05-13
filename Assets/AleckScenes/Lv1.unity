@@ -693,6 +693,11 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6959146775970645911, guid: 7ca98f8ba286e4b46b369d2852b8ffb0,
+        type: 3}
+      propertyPath: levelName
+      value: Lv2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1858,6 +1863,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3375465658845592918, guid: 01a3dd914d0e04ed58d98190ab57e419,
+        type: 3}
+      propertyPath: levelName
+      value: Lv2 1
       objectReference: {fileID: 0}
     - target: {fileID: 7713805426553668073, guid: 01a3dd914d0e04ed58d98190ab57e419,
         type: 3}

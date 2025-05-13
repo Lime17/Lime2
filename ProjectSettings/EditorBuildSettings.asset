@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AleckScenes/Lv1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/AleckScenes/Lv2.unity
+    guid: 361688d6f3cbd1f47946de6a3fbf7d87
+  - enabled: 1
+    path: Assets/AleckScenes/Lv2 1.unity
+    guid: d9cd74cdf37078e4eb237ca2c02906da
   m_configObjects: {}
